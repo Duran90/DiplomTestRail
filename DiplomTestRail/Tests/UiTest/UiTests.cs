@@ -1,6 +1,6 @@
-namespace DiplomTestRail
+namespace DiplomTestRail.Tests.UiTest
 {
-    public class Tests
+    public class UiPositiveTests
     {
         [SetUp]
         public void Setup()

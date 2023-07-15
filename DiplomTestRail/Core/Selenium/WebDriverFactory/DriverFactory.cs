@@ -3,10 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DiplomTestRail.Core.Selenium.WebDriverFactory.Conf;
+using OpenQA.Selenium;
 
 namespace DiplomTestRail.Core.Selenium.WebDriverFactory
 {
-    internal class DriverFactory
+    internal class DriverFactory: IDriverFactory
     {
+
+        public WebDriver getDriver(string browser)
+        {
+            switch (browser.ToLower())
+            {
+                case "chrome":
+                    return ChromeWebDriver.newDriver();
+                case "firefox":
+                    return FireFoxWebDriver.newDriver();
+                case "edge":
+                    return EdgeWebDriver.newDriver();
+                default:
+                    throw new DriveNotFoundException();
+
+            }
+        }
     }
 }

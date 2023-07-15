@@ -10,7 +10,7 @@ namespace DiplomTestRail.Core.Selenium.WebDriverFactory.Conf
 {
     public class ChromeWebDriver
     {
-        public WebDriver newDriver()
+        public static WebDriver newDriver()
         {
             ChromeOptions options = new ChromeOptions();
             options.AddArgument("--diable-gpu");
