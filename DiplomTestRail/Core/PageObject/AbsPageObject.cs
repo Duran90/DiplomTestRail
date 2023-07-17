@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace DiplomTestRail.Core.PageObject
 {
-    internal abstract class AbsPageObject
+    public abstract class AbsPageObject
     {
         protected WebDriver driver;
         protected Actions actions;
@@ -22,5 +22,8 @@ namespace DiplomTestRail.Core.PageObject
             this.actions = new Actions(driver);
             this.wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
+
+        //TODO Методы получения элементов
+
     }
 }
