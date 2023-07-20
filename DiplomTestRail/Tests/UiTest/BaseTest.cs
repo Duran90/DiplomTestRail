@@ -5,20 +5,23 @@ namespace DiplomTestRail.Tests.UiTest
 {
     public class UiPositiveTests
     {
-
-        private string browser = "";//TODO
+        
         private WebDriver driver;
         
         [SetUp]
         public void Setup()
         {
-            this.driver = new DriverFactory().getDriver(browser);
+            var browserType = TestContext.Parameters.Get("BrowserType");
+
+            this.driver = new DriverFactory().getDriver(browserType);
         }
 
-        [Test]
-        public void Test1()
+        [TearDown]
+        public void CloseBrowser()
         {
-            Assert.Pass();
+
+            driver?.Close();
+            driver?.Quit();
         }
     }
 }

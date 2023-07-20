@@ -13,7 +13,7 @@ namespace DiplomTestRail.Core.Selenium.WebDriverFactory.Conf
         public static WebDriver newDriver()
         {
             ChromeOptions options = new ChromeOptions();
-            options.AddArgument("--diable-gpu");
+            options.AddArgument("--disable-gpu");
             options.AddArgument("incognito");
             options.AddArgument("--start-maximized");
             return new ChromeDriver(options);

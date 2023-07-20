@@ -11,10 +11,7 @@ namespace DiplomTestRail.Core.Pages
     public abstract class AbsBasePage : AbsPageObject
     {
         public static string BASE_URL = "BASE_URL"; //TODO
-
         private Header header;
-
-
         public AbsBasePage(WebDriver driver) : base(driver)
         {
             this.header = new Header(driver);
