@@ -10,8 +10,6 @@ namespace DiplomTestRail.Core.Selenium.WebDriverFactory
 {
     internal class DriverFactory: IDriverFactory
     {
-        private var sting = "";
-        string browserType = TestContext.Parameters.Get("BrowserType");
         public WebDriver getDriver(string browser)
         {
             switch (browser.ToLower())
