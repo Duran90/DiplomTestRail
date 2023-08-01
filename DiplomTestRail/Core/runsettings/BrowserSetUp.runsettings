@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RunSettings>
+	<TestRunParameters>
+		<Parameter name="Browser" value="Chrome"/>
+		<Parameter name="WitHelperTime" value="10"/>
+		<Parameter name="Email" value="gagaha2808@naymedia.com"/>
+		<Parameter name="Password" value="H54999@r"/>
+		<Parametet name="Link" value="gagaha2808"/>
+	</TestRunParameters>
+</RunSettings>
