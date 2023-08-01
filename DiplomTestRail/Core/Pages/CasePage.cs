@@ -7,9 +7,9 @@ using OpenQA.Selenium;
 
 namespace DiplomTestRail.Core.Pages
 {
-    internal class CasePage : AbsBasePage
+    internal class CasePage : BasePage
     {
-        public CasePage(WebDriver driver) : base(driver)
+        public CasePage(IWebDriver driver) : base(driver)
         {
         }
     }

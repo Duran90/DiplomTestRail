@@ -8,7 +8,7 @@ using OpenQA.Selenium;
 
 namespace DiplomTestRail.Core.Selenium.WebDriverFactory
 {
-    internal class DriverFactory: IDriverFactory
+    public class DriverFactory: IDriverFactory
     {
         public WebDriver getDriver(string browser)
         {
