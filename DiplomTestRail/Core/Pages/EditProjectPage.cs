@@ -7,9 +7,9 @@ using OpenQA.Selenium;
 
 namespace DiplomTestRail.Core.Pages
 {
-    internal class ProjectPage : BasePage
+    internal class EditProjectPage : BasePage
     {
-        public ProjectPage(IWebDriver driver) : base(driver)
+        public EditProjectPage(IWebDriver driver) : base(driver)
         {
         }
     }

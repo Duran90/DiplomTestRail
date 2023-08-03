@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DiplomTestRail.Core.Components;
+using DiplomTestRail.Core.Selenium.WebDriverFactory;
 using OpenQA.Selenium;
 
 namespace DiplomTestRail.Core.Pages
@@ -11,25 +12,26 @@ namespace DiplomTestRail.Core.Pages
     public class MainPage : BasePage
     {
         private static string CssProjectElem = "div.table.summary-auto>div";
+        private static string IdAddProject = "sidebar-projects-add";
 
-        private List<ProjectComponent> projects;
+        private List<MainProjectComponent> projects;
 
         public MainPage(IWebDriver driver) : base(driver)
         {
-            this.projects = new List<ProjectComponent>();
+            this.projects = new List<MainProjectComponent>();
             foreach (IWebElement element in driver.FindElements(By.CssSelector(CssProjectElem)))
             {
-                projects.Add(ProjectComponent.Create(element));
+                projects.Add(MainProjectComponent.Create(element));
             }
         }
 
-        public ICollection<ProjectComponent> GetProjects()
+        public ICollection<MainProjectComponent> GetProjects()
         {
             return this.projects;
              
         }
 
-        public ProjectComponent getCartByName(string name)
+        public MainProjectComponent getCartByName(string name)
         {
             foreach (var projectComponent in projects)
             {
@@ -45,7 +47,11 @@ namespace DiplomTestRail.Core.Pages
         public void ClickProjectCard(String name)
         {
             getCartByName(name).Click();
-            Console.WriteLine("Вход выполнен");
+        }
+
+        public void ClickAddProject()
+        {
+            ClickElementById(IdAddProject);
         }
     }
 }

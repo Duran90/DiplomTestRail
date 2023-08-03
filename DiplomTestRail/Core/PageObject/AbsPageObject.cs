@@ -37,11 +37,10 @@ namespace DiplomTestRail.Core.PageObject
         //    driver.FindElement(By.XPath(xpath)).Click();
         //}
 
-        //public void ClickElementById(string id)
-        //{
-            
-        //    driver.FindElement(By.Id(id)).Click();
-        //}
+        public void ClickElementById(string id)
+        {
+            driver.FindElement(By.Id(id)).Click();
+        }
 
     }
 }

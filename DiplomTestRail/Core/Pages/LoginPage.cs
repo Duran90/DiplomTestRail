@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DiplomTestRail.Core.Selenium.Elements;
+using DiplomTestRail.Core.Selenium.WebDriverFactory;
 using OpenQA.Selenium;
 
 namespace DiplomTestRail.Core.Pages

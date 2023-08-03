@@ -8,7 +8,7 @@ using OpenQA.Selenium;
 
 namespace DiplomTestRail.Core.Components
 {
-    public class ProjectComponent
+    public class MainProjectComponent
     {
         private static string cssTitle = "div.summary-title.text-ppp>a";
         private static string cssLinks = "div.summary-links.text-secondary>a";
@@ -16,7 +16,7 @@ namespace DiplomTestRail.Core.Components
 
         private IWebElement title;
         private ICollection<IWebElement> links;
-        public ProjectComponent(IWebElement title, ICollection<IWebElement> links)
+        public MainProjectComponent(IWebElement title, ICollection<IWebElement> links)
         {
             this.title = title;
             this.links = links;
@@ -44,11 +44,11 @@ namespace DiplomTestRail.Core.Components
             title.Click();
         }
 
-        public static ProjectComponent Create(IWebElement element)
+        public static MainProjectComponent Create(IWebElement element)
         {
             IWebElement title = element.FindElement(By.CssSelector(cssTitle));
             ICollection<IWebElement> links = element.FindElements(By.CssSelector(cssLinks));
-            return new ProjectComponent(title,links);
+            return new MainProjectComponent(title,links);
         }
     }
 }

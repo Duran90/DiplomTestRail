@@ -14,6 +14,10 @@ namespace DiplomTestRail.Core.Helers
         {
             new WebDriverWait(driver, TimeSpan.FromSeconds(time)).Until(element => element.FindElement(by));
         }
+        public static void WaitElementUntilIsIsDisplay(IWebDriver driver, By by, int time = 10)
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(time)).Until(element => element.FindElement(by).Displayed);
+        }
 
         public static void WaitElementWithTitle(IWebDriver driver, By by, string text, int time = 10)
         {
