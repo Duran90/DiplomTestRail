@@ -4,48 +4,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DiplomTestRail.Core.Components;
-using DiplomTestRail.Core.Helers;
+using DiplomTestRail.Core.Helpers;
 using DiplomTestRail.Core.PageObject;
 using DiplomTestRail.Core.Selenium.WebDriverFactory;
 using OpenQA.Selenium;
 
 namespace DiplomTestRail.Core.Pages
 {
-    public class ProjectsPage: AbsPageObject
-
+    public class ProjectsPage : AbsPageObject
     {
-        private string projetsRows = ".hoverSensitive";
+        private const string ProjetsRows = ".hoverSensitive";
 
-        private string confirmationDialogId = "dialog-ident-deleteDialog";
+        private const string ConfirmationDialogId = "dialog-ident-deleteDialog";
 
-        private List<ProjectsPageProjectComponent> projectsList;
-        private ConfirmationComponent confirmationComponent;
+        private List<ProjectsPageProjectComponent> _projectsList;
+        private ConfirmationComponent _confirmationComponent;
 
         public ProjectsPage(IWebDriver driver) : base(driver)
         {
-            loadProjectList();
-            
+            LoadProjectList();
         }
 
-        private void loadProjectList()
+        private void LoadProjectList()
         {
-            this.projectsList = new List<ProjectsPageProjectComponent>();
-            foreach (IWebElement element in driver.FindElements(By.CssSelector(projetsRows)))
+            this._projectsList = new List<ProjectsPageProjectComponent>();
+            foreach (IWebElement element in Driver.FindElements(By.CssSelector(ProjetsRows)))
             {
-                projectsList.Add(ProjectsPageProjectComponent.CreProjectsPageProjectComponent(element));
+                _projectsList.Add(ProjectsPageProjectComponent.CreProjectsPageProjectComponent(element));
             }
         }
 
         public ICollection<ProjectsPageProjectComponent> GetProjectsList()
         {
-            return this.projectsList;
+            return this._projectsList;
         }
 
         public ProjectsPageProjectComponent GetPageProjectComponent(String name)
         {
             foreach (var element in GetProjectsList())
             {
-                if (element.getName().Equals(name))
+                if (element.GetName().Equals(name))
                 {
                     return element;
                 }
@@ -59,13 +57,12 @@ namespace DiplomTestRail.Core.Pages
             if (project != null)
             {
                 project.DeletedClick();
-                WaitingHelper.WaitElementUntilIsIsDisplay(driver, By.Id(confirmationDialogId));
-                IWebElement confDialog = driver.FindElement(By.Id(confirmationDialogId));
+                WaitingHelper.WaitElementUntilIsIsDisplay(Driver, By.Id(ConfirmationDialogId));
+                IWebElement confDialog = Driver.FindElement(By.Id(ConfirmationDialogId));
                 ConfirmationComponent.CreateConfirmationComponent(confDialog).ClickOnCheckBox();
                 ConfirmationComponent.CreateConfirmationComponent(confDialog).clickOnOk();
-                loadProjectList();
+                LoadProjectList();
             }
-
         }
     }
 }

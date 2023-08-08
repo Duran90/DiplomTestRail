@@ -9,48 +9,48 @@ namespace DiplomTestRail.Core.Components
 {
     public class TestCaseRowComponent
     {
-        private static string checkBoxCss = "td.checkbox>.selectionCheckbox";
-        private static string idCss = "td.id";
-        private static string titleCss = "span.title";
+        private const string CheckBoxCss = "td.checkbox>.selectionCheckbox";
+        private const string IdCss = "td.id";
+        private const string TitleCss = "span.title";
 
 
-        private IWebElement checkBoxElement;
-        private IWebElement idElement;
-        private IWebElement titlElement;
+        private IWebElement _checkBoxElement;
+        private IWebElement _idElement;
+        private IWebElement _titlElement;
 
         public TestCaseRowComponent(IWebElement checkBoxElement, IWebElement idElement, IWebElement titlElement)
         {
-            this.checkBoxElement = checkBoxElement;
-            this.idElement = idElement;
-            this.titlElement = titlElement;
+            this._checkBoxElement = checkBoxElement;
+            this._idElement = idElement;
+            this._titlElement = titlElement;
         }
 
         public static TestCaseRowComponent Create(IWebElement element)
         {
             Console.WriteLine(element.Text);
-            IWebElement checkBox = element.FindElement(By.CssSelector(checkBoxCss));
-            IWebElement id = element.FindElement(By.CssSelector(idCss));
-            IWebElement title = element.FindElement(By.CssSelector(titleCss));
+            IWebElement checkBox = element.FindElement(By.CssSelector(CheckBoxCss));
+            IWebElement id = element.FindElement(By.CssSelector(IdCss));
+            IWebElement title = element.FindElement(By.CssSelector(TitleCss));
             return new TestCaseRowComponent(checkBox, id, title);
         }
         
-            public string getTitleText()
+            public string GetTitleText()
         {
-            return titlElement.Text;
+            return _titlElement.Text;
         }
 
             public string getId()
             {
-                return idElement.Text;
+                return _idElement.Text;
 
             }
 
         public void checkBoxClick()
         {
-            checkBoxElement.Click();
+            _checkBoxElement.Click();
         }
-        public void idClick() { idElement.Click(); }
-        public void titlClick() {  titlElement.Click(); }
+        public void idClick() { _idElement.Click(); }
+        public void titlClick() {  _titlElement.Click(); }
 
     }
 }

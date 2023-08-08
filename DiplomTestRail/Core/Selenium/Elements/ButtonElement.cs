@@ -9,19 +9,14 @@ namespace DiplomTestRail.Core.Selenium.Elements
 {
     public class ButtonElement : BaseElement
     {
-      
-
         public ButtonElement(IWebDriver driver, By locator) : base(driver, locator)
         {
         }
-
         public ButtonElement(IWebDriver driver, string xpath) : base(driver, xpath)
         {
 
         }
-
-
-
+        
         public void Click()
         {
             GetElement().Click();

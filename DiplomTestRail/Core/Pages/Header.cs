@@ -11,8 +11,8 @@ namespace DiplomTestRail.Core.Pages
     public class Header : AbsPageObject
     {
         //TODO локаторы
-        private static string TestCasePageCss = "#header>ul>li:nth-child(6)";
-        private static string BackToMainPageId = "navigation-dashboard-top";
+        private const string TestCasePageCss = "#header>ul>li:nth-child(6)";
+        private const string BackToMainPageId = "navigation-dashboard-top";
 
         public Header(IWebDriver driver) : base(driver)
         {
@@ -22,13 +22,13 @@ namespace DiplomTestRail.Core.Pages
 
         public MainPage OpenDashboardPage()
         {
-            return new MainPage(driver);
+            return new MainPage(Driver);
         }
 
         public TestCasesPage OpenTestCasesPage()
         {
-            driver.FindElement(By.CssSelector(TestCasePageCss)).Click();
-            return new TestCasesPage(driver);
+            Driver.FindElement(By.CssSelector(TestCasePageCss)).Click();
+            return new TestCasesPage(Driver);
         }
 
     }

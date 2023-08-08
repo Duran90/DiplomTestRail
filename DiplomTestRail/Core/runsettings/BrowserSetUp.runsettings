@@ -5,6 +5,6 @@
 		<Parameter name="WitHelperTime" value="10"/>
 		<Parameter name="Email" value="gagaha2808@naymedia.com"/>
 		<Parameter name="Password" value="H54999@r"/>
-		<Parametet name="Link" value="gagaha2808"/>
+		<Parameter name="Link" value="gagaha2808"/>
 	</TestRunParameters>
 </RunSettings>

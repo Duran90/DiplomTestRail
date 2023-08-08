@@ -9,13 +9,13 @@ namespace DiplomTestRail.Tests.UiTest
 {
     public class LoginPageTests: BaseTest
     {
-        protected string expectedURL = "https://gagaha2808.testrail.io/index.php?/dashboard";
-        protected string expectedLogInErrorMessage = "Sorry, there was a problem.";
-        protected string expectedLogInErrorDescription = "Email/Login or Password is incorrect. Please try again.";
+        protected const string ExpectedUrl = "https://gagaha2808.testrail.io/index.php?/dashboard";
+        protected const string ExpectedLogInErrorMessage = "Sorry, there was a problem.";
+        protected const string ExpectedLogInErrorDescription = "Email/Login or Password is incorrect. Please try again.";
 
 
-        protected string email = TestContext.Parameters.Get("Email");
-        protected string password = TestContext.Parameters.Get("Password");
+        protected string Email = TestContext.Parameters.Get("Email");
+        protected string Password = TestContext.Parameters.Get("Password");
 
 
         [Test]
@@ -23,8 +23,8 @@ namespace DiplomTestRail.Tests.UiTest
         {
             LoginPage loginPage = new LoginPage(browser.Driver);
             loginPage.Open();
-            loginPage.Login(email, password);
-            Assert.AreEqual(expectedURL, browser.Driver.Url.ToString());
+            loginPage.Login(Email, Password);
+            Assert.That(browser.Driver.Url.ToString(), Is.EqualTo(ExpectedUrl));
         }
 
         [Test]
@@ -32,9 +32,9 @@ namespace DiplomTestRail.Tests.UiTest
         {
             LoginPage loginPage = new LoginPage(browser.Driver);
             loginPage.Open();
-            loginPage.Login(email+"2", password);
-            Assert.AreEqual(expectedLogInErrorMessage, loginPage.GetErrorMessage());
-            Assert.AreEqual(expectedLogInErrorDescription, loginPage.GetErrorDescription());
+            loginPage.Login(Email+"2", Password);
+            Assert.That(loginPage.GetErrorMessage(), Is.EqualTo(ExpectedLogInErrorMessage));
+            Assert.That(loginPage.GetErrorDescription(), Is.EqualTo(ExpectedLogInErrorDescription));
         }
     }
 }
