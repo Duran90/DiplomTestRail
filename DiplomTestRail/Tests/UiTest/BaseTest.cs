@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using NLog;
 
 namespace DiplomTestRail.Tests.UiTest
 {
@@ -13,9 +14,10 @@ namespace DiplomTestRail.Tests.UiTest
     {
 
             protected Browser browser;
+            private Logger logger = LogManager.GetCurrentClassLogger();
 
 
-            [SetUp]
+                [SetUp]
             public void Setup()
             {   
                 
