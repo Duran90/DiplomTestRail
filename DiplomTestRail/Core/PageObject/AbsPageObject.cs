@@ -13,15 +13,15 @@ namespace DiplomTestRail.Core.PageObject
 {
     public abstract class AbsPageObject
     {
-        protected IWebDriver driver;
-        protected Actions actions;
-        protected WebDriverWait wait;
+        protected IWebDriver Driver;
+        protected Actions Actions;
+        protected WebDriverWait Wait;
 
         public AbsPageObject(IWebDriver driver)
         {
-            this.driver = driver;
-            this.actions = new Actions(driver);
-            this.wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            this.Driver = driver;
+            this.Actions = new Actions(driver);
+            this.Wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
         //TODO Методы получения элемен
@@ -39,7 +39,7 @@ namespace DiplomTestRail.Core.PageObject
 
         public void ClickElementById(string id)
         {
-            driver.FindElement(By.Id(id)).Click();
+            Driver.FindElement(By.Id(id)).Click();
         }
 
     }

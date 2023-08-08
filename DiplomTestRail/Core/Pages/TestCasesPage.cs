@@ -10,23 +10,23 @@ namespace DiplomTestRail.Core.Pages
 {
     public class TestCasesPage : BasePage
     {
-        private static string testCasesCss = ".caseRow";
+        private const string TestCasesCss = ".caseRow";
 
-        private List<TestCaseRowComponent> testCases;
+        private List<TestCaseRowComponent> _testCases;
         public TestCasesPage(IWebDriver driver) : base(driver)
         {
             var gridOneElem = driver.FindElement(By.Id("grid-1")); 
-            this.testCases = new List<TestCaseRowComponent>();
-            foreach (IWebElement element in gridOneElem.FindElements(By.CssSelector(testCasesCss)))
+            this._testCases = new List<TestCaseRowComponent>();
+            foreach (IWebElement element in gridOneElem.FindElements(By.CssSelector(TestCasesCss)))
             {
                 Console.WriteLine("grid elem " + element.TagName + " " + element.Text);
-                testCases.Add(TestCaseRowComponent.Create(element));
+                _testCases.Add(TestCaseRowComponent.Create(element));
             }
         }
 
-        public TestCaseRowComponent getTestCaseById(string id)
+        public TestCaseRowComponent GetTestCaseById(string id)
         {
-            foreach (var testCaseComponent in testCases)
+            foreach (var testCaseComponent in _testCases)
             {
                 if (testCaseComponent.getId().ToLower().Equals(id.ToLower()))
                 {
@@ -36,9 +36,9 @@ namespace DiplomTestRail.Core.Pages
             throw new Exception("no such id");
         }
 
-        public TestCaseRowComponent getTestCAseByTitle(string title)
+        public TestCaseRowComponent GetTestCAseByTitle(string title)
         {
-            foreach (var testCaseComponent in testCases)
+            foreach (var testCaseComponent in _testCases)
             {
                 return testCaseComponent;
             }
@@ -47,11 +47,11 @@ namespace DiplomTestRail.Core.Pages
 
         public void ClickIdTestCase(String name)
         {
-            getTestCaseById(name).idClick();
+            GetTestCaseById(name).idClick();
         }
         public void ClickTitleTestCase(String name)
         {
-            getTestCAseByTitle(name).titlClick();
+            GetTestCAseByTitle(name).titlClick();
         }
     }
 }

@@ -10,45 +10,47 @@ namespace DiplomTestRail.Core.Components
 {
     public class MainProjectComponent
     {
-        private static string cssTitle = "div.summary-title.text-ppp>a";
-        private static string cssLinks = "div.summary-links.text-secondary>a";
+        private static string _cssTitle = "div.summary-title.text-ppp>a";
+        private static string _cssLinks = "div.summary-links.text-secondary>a";
 
 
-        private IWebElement title;
-        private ICollection<IWebElement> links;
+        private IWebElement _title;
+        private ICollection<IWebElement> _links;
+
         public MainProjectComponent(IWebElement title, ICollection<IWebElement> links)
         {
-            this.title = title;
-            this.links = links;
+            this._title = title;
+            this._links = links;
         }
 
         public String GetTitle()
         {
-            return title.Text;
+            return _title.Text;
         }
 
         public void ClickLink(string link)
         {
-            foreach (IWebElement linkElement in this.links)
+            foreach (IWebElement linkElement in this._links)
             {
                 if (linkElement.Text.ToLower().Equals(link.ToLower()))
                 {
                     linkElement.Click();
                 }
             }
+
             throw new Exception("no such link");
         }
 
         public void Click()
         {
-            title.Click();
+            _title.Click();
         }
 
         public static MainProjectComponent Create(IWebElement element)
         {
-            IWebElement title = element.FindElement(By.CssSelector(cssTitle));
-            ICollection<IWebElement> links = element.FindElements(By.CssSelector(cssLinks));
-            return new MainProjectComponent(title,links);
+            IWebElement title = element.FindElement(By.CssSelector(_cssTitle));
+            ICollection<IWebElement> links = element.FindElements(By.CssSelector(_cssLinks));
+            return new MainProjectComponent(title, links);
         }
     }
 }

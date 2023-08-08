@@ -9,38 +9,38 @@ namespace DiplomTestRail.Core.Components
 {
     public class ProjectsPageProjectComponent
     {
-        private IWebElement nameElem;
-        private IWebElement editElem;
-        private IWebElement deletedElem;
+        private IWebElement _nameElem;
+        private IWebElement _editElem;
+        private IWebElement _deletedElem;
 
-        private static string nameCss = "td:nth-child(1)>a";
-        private static string editCss = "td:nth-child(2)>a";
-        private static string deletedCss = "td:nth-child(3)>a";
+        private const string NameCss = "td:nth-child(1)>a";
+        private const string EditCss = "td:nth-child(2)>a";
+        private const string DeletedCss = "td:nth-child(3)>a";
 
         public ProjectsPageProjectComponent(IWebElement nameElem,IWebElement editElem,IWebElement deletedElem)
         {
-            this.nameElem = nameElem;
-            this.editElem = editElem;
-            this.deletedElem = deletedElem;
+            this._nameElem = nameElem;
+            this._editElem = editElem;
+            this._deletedElem = deletedElem;
         }
 
-        public string getName()
+        public string GetName()
         {
-             return nameElem.Text;
+             return _nameElem.Text;
         }
 
         public void DeletedClick()
         {
-            this.deletedElem.Click();
+            this._deletedElem.Click();
             return;
         }
 
 
         public static ProjectsPageProjectComponent CreProjectsPageProjectComponent (IWebElement element)
         {
-            IWebElement name = element.FindElement(By.CssSelector(nameCss));
-            IWebElement edit = element.FindElement(By.CssSelector(editCss));
-            IWebElement deleted = element.FindElement(By.CssSelector(deletedCss));
+            IWebElement name = element.FindElement(By.CssSelector(NameCss));
+            IWebElement edit = element.FindElement(By.CssSelector(EditCss));
+            IWebElement deleted = element.FindElement(By.CssSelector(DeletedCss));
             return new ProjectsPageProjectComponent(name, edit, deleted);
         }
 

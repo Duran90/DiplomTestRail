@@ -13,7 +13,7 @@ namespace DiplomTestRail.Core.Pages
     {
         private const string EmailInputXPath = ".//input[@name='name']";
         private const string PasswordInputXPath = ".//input[@name='password']";
-        private const string LoginButtonCSS = "#button_primary";
+        private const string LoginButtonCss = "#button_primary";
         private const string ErrorLogInMessage = ".error-on-top";
         private const string ErrorLogInDescription = ".error-text";
         public InputElement Name;
@@ -24,7 +24,7 @@ namespace DiplomTestRail.Core.Pages
         {
             this.Name = new InputElement(driver, EmailInputXPath);
             this.Password = new InputElement(driver, PasswordInputXPath);
-            this.LoginButton = new ButtonElement(driver, By.CssSelector(LoginButtonCSS));
+            this.LoginButton = new ButtonElement(driver, By.CssSelector(LoginButtonCss));
         }
 
 
@@ -35,16 +35,16 @@ namespace DiplomTestRail.Core.Pages
             this.Password.clearText();
             this.Password.setText(password);
             this.LoginButton.Submit();
-            return new MainPage(driver);
+            return new MainPage(Driver);
         }
 
         public string GetErrorMessage()
         {
-            return driver.FindElement(By.CssSelector(ErrorLogInMessage)).Text;
+            return Driver.FindElement(By.CssSelector(ErrorLogInMessage)).Text;
         }
         public string GetErrorDescription()
         {
-            return driver.FindElement(By.CssSelector(ErrorLogInDescription)).Text;
+            return Driver.FindElement(By.CssSelector(ErrorLogInDescription)).Text;
            
         }
 

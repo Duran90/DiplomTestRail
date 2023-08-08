@@ -11,29 +11,29 @@ namespace DiplomTestRail.Core.Pages
 {
     public class MainPage : BasePage
     {
-        private static string CssProjectElem = "div.table.summary-auto>div";
-        private static string IdAddProject = "sidebar-projects-add";
+        private const string CssProjectElem = "div.table.summary-auto>div";
+        private const string IdAddProject = "sidebar-projects-add";
 
-        private List<MainProjectComponent> projects;
+        private List<MainProjectComponent> _projects;
 
         public MainPage(IWebDriver driver) : base(driver)
         {
-            this.projects = new List<MainProjectComponent>();
+            this._projects = new List<MainProjectComponent>();
             foreach (IWebElement element in driver.FindElements(By.CssSelector(CssProjectElem)))
             {
-                projects.Add(MainProjectComponent.Create(element));
+                _projects.Add(MainProjectComponent.Create(element));
             }
         }
 
         public ICollection<MainProjectComponent> GetProjects()
         {
-            return this.projects;
+            return this._projects;
              
         }
 
-        public MainProjectComponent getCartByName(string name)
+        public MainProjectComponent GetCartByName(string name)
         {
-            foreach (var projectComponent in projects)
+            foreach (var projectComponent in _projects)
             {
                 if (projectComponent.GetTitle().ToLower().Equals(name.ToLower()))
                 {
@@ -46,7 +46,7 @@ namespace DiplomTestRail.Core.Pages
 
         public void ClickProjectCard(String name)
         {
-            getCartByName(name).Click();
+            GetCartByName(name).Click();
         }
 
         public void ClickAddProject()
