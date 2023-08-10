@@ -17,4 +17,17 @@
         <PackageReference Include="coverlet.collector" Version="3.2.0"/>
     </ItemGroup>
 
+
+    <ItemGroup>
+      <ProjectReference Include="..\BusinessObject\BusinessObject.csproj" />
+      <ProjectReference Include="..\Core\Core.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <None Include="bin\Debug\net7.0\appsettings.json" />
+    </ItemGroup>
+
+
+
 </Project>
