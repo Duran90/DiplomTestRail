@@ -12,7 +12,7 @@ namespace DiplomTestRail.Core.Models
 
         public static UserModel GetTestRailUser()
         {
-            return new UserModel
+            return new UserModel 
             {
                 Email = TestContext.Parameters.Get("Email"),
                 Password =  TestContext.Parameters.Get("Password")
