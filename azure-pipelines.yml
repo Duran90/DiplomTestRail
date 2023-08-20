@@ -16,6 +16,10 @@ variables:
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
 
 steps:
+- task: NuGetToolInstaller@0
+  displayName: 'Use NuGet 6.x'
+  inputs:
+    versionSpec: 6.x
 - task: NuGetCommand@2
   displayName: 'Restore nuget package for Solution'
   inputs:
