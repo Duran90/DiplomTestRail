@@ -2,6 +2,7 @@
 using BusinessObject.Models;
 using Core.Configuration;
 using Core.Selenium;
+using Core.Selenium.Elements;
 using NUnit.Allure.Attributes;
 using OpenQA.Selenium;
 
@@ -9,12 +10,21 @@ namespace BusinessObject.UI.Pages;
 
 public class LoginPage : BasePage
 {
-    private readonly By _usernameField = By.XPath(".//input[@name='name']");
-    private readonly By _passwordField = By.XPath(".//input[@name='password']");
-    private readonly By _loginButton = By.CssSelector("#button_primary");
-    private readonly By _errorLoginMessage = By.CssSelector(".error-on-top");
-    private readonly By _errorLoginDescription = By.CssSelector(".error-text");
-    private readonly By _errorEmailValidation = By.CssSelector("div.loginpage-message-image.loginpage-message");
+    private readonly By _usernameFieldLocator = By.XPath(".//input[@name='name']");
+    private readonly By _passwordFieldLocator = By.XPath(".//input[@name='password']");
+    private readonly By _loginButtonLocator = By.CssSelector("#button_primary");
+    private Input UsernameField => new (Driver, _usernameFieldLocator);
+    private Input PasswordField => new (Driver, _passwordFieldLocator);
+    private Button LoginButton =>new (Driver, _loginButtonLocator);
+    
+    
+    private readonly By _errorLoginMessageLocator = By.CssSelector(".error-on-top");
+    private readonly By _errorLoginDescriptionLocator = By.CssSelector(".error-text");
+    private readonly By _errorEmailValidationLocator = By.CssSelector("div.loginpage-message-image.loginpage-message");
+    
+    private BaseElement ErrorLoginMessage => new(Driver, _errorLoginMessageLocator);
+    private BaseElement ErrorLoginDescription => new (Driver, _errorLoginDescriptionLocator);
+    private BaseElement ErrorEmailValidation => new(Driver ,_errorEmailValidationLocator);
 
     public override string Url => $"{AppConfiguration.Browser.BaseUrl}/index.php?/auth/login/";
     
@@ -29,26 +39,25 @@ public class LoginPage : BasePage
     public MainPage Login(UserModel user)
     {
         Logger.Info($"Login as \"{user.Username}\"");
-
-        EnterText(_usernameField, user.Username);
-        EnterText(_passwordField, user.Password);
-        ClickElement(_loginButton);
+        UsernameField.TypeText(user.Username);
+        PasswordField.TypeText(user.Password);
+        LoginButton.ClickElement();
         return new MainPage(Driver);
     }
 
     public ErrorMessageModel GetLoginErrorMessage()
     {
-        WaitingHelper.WaitElementUntilIsDisplay(driver: Driver, _errorLoginDescription);
+        WaitingHelper.WaitElementUntilIsDisplay(driver: Driver, _errorLoginDescriptionLocator);
         
-        var errTitle = GetElementText(_errorLoginMessage).Trim();
-        var errText = GetElementText(_errorLoginDescription).Trim();
+        var errTitle = ErrorLoginMessage.GetElementText().Trim();
+        var errText = ErrorLoginDescription.GetElementText().Trim();
 
         return new ErrorMessageModel(errTitle, errText);
     }
 
     public string GetEmailValidationError()
     {
-        WaitingHelper.WaitElementUntilIsDisplay(driver: Driver, _errorEmailValidation);
-        return GetElementText(_errorEmailValidation);
+        WaitingHelper.WaitElementUntilIsDisplay(driver: Driver, _errorEmailValidationLocator);
+        return ErrorEmailValidation.GetElementText();
     }
 }

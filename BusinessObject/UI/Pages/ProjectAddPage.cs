@@ -10,8 +10,9 @@ public class ProjectAddPage : ProjectPage
 {
     public override string Url => $"{AppConfiguration.Browser.BaseUrl}/index.php?/admin/projects/add/1";
 
-    private readonly By _errorMessage = By.CssSelector("#content-inner>div.message.message-error");
+    private readonly By _errorMessageLocator = By.CssSelector("#content-inner>div.message.message-error");
 
+    private BaseElement ErrorMessage => new(Driver, _errorMessageLocator);
     public ProjectAddPage(IWebDriver driver) : base(driver)
     {
     }
@@ -32,7 +33,7 @@ public class ProjectAddPage : ProjectPage
     
     public string GetErrorMessage()
     {
-        WaitingHelper.WaitElement(Driver, _errorMessage);
-        return GetElementText(_errorMessage);
+        WaitingHelper.WaitElement(Driver, _errorMessageLocator);
+        return ErrorMessage.GetElementText();
     }
 }

@@ -24,7 +24,9 @@ public class LoginPageTest : BaseTest
         var user = UserBuilder.GetTestRailUser();
         var loginPage = new LoginPage(Browser.Instance.Driver);
         var mainPage = loginPage.Open().Login(user);
+        
         WaitingHelper.WaitUntilUrlToBe(Browser.Instance.Driver, mainPage.Url);
+        
         Assert.That(Browser.Instance.Driver.Url, Is.EqualTo(mainPage.Url));
     }
 
@@ -41,6 +43,7 @@ public class LoginPageTest : BaseTest
         var loginPage = new LoginPage(Browser.Instance.Driver);
         loginPage.Open().Login(user);
         var errorMessage = loginPage.GetLoginErrorMessage();
+        
         Assert.Multiple(() =>
         {
             Assert.That(errorMessage.Title, Is.EqualTo(ExpectedLogInErrorMessage));
@@ -61,6 +64,7 @@ public class LoginPageTest : BaseTest
         var loginPage = new LoginPage(Browser.Instance.Driver);
         loginPage.Open().Login(user);
         var errorEmailValidation = loginPage.GetEmailValidationError();
+        
         Assert.That(errorEmailValidation, Is.EqualTo(ExpectedValidationErrorMessage));
     }
 }

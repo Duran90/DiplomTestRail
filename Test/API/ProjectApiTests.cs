@@ -30,6 +30,7 @@ public class ProjectApiTests : BaseApiTest
     public void GetProjects()
     {
         var response = _apiProjectSteps.GetProjects();
+        
         Assert.Multiple(() =>
         {
             Assert.That(response!.Size, Is.GreaterThan(0));
@@ -74,6 +75,7 @@ public class ProjectApiTests : BaseApiTest
     {
         var projectModel = ProjectBuilder.GetProject();
         var projectResponse = _apiProjectSteps.CreateProject(projectModel);
+        
         Assert.Multiple(() =>
         {
             Assert.That(projectResponse!.Name, Is.EqualTo(projectModel.Name));
@@ -95,6 +97,7 @@ public class ProjectApiTests : BaseApiTest
     {
         var projectModel = ProjectBuilder.GetEmptyProject();
         var response = _service.CreateProject(projectModel);
+        
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
     }
     

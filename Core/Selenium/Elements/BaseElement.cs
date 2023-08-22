@@ -22,5 +22,12 @@ namespace Core.Selenium.Elements
 
         public bool Enabled() => Element.Enabled;
 
+        public void ClickElement()
+        {
+            Element.Click();
+        }
+        
+        public string GetElementText() => Element.Text;
+
     }
 }

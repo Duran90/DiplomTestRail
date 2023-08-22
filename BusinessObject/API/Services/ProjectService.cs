@@ -21,6 +21,7 @@ public class ProjectService : BaseService
     public RestResponse GetProject(int id) 
     {
         var request = new RestRequest(GetProjectByIdEndpoint).AddUrlSegment("projectId", id);
+        
         return ApiClient.Execute(request);
     }
 

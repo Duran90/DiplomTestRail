@@ -33,18 +33,4 @@ public abstract class BasePage
         return this;
     }
     
-    protected void ClickElement(By locator)
-    {
-        Driver.FindElement(locator).Click();
-    }
-
-    protected void EnterText(By locator, string text)
-    {
-        Driver.FindElement(locator).SendKeys(text);
-    }
-    
-    protected string GetElementText(By locator)
-    {
-        return Driver.FindElement(locator).Text;
-    }
 }

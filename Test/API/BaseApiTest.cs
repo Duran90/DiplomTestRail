@@ -15,7 +15,6 @@ public class BaseApiTest
     [OneTimeSetUp]
     public void InitApiClient()
     {
-        _allure = AllureLifecycle.Instance;
-        ApiClient = new BaseApiClient(AppConfiguration.API.BaseUrl);
+        _allure = AllureLifecycle.Instance; ApiClient = new BaseApiClient(AppConfiguration.API.BaseUrl);
     }
 }

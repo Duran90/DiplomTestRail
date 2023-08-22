@@ -4,6 +4,7 @@ using BusinessObject.API.Services;
 using Newtonsoft.Json;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
 
 namespace BusinessObject.API.Steps;
 

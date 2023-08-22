@@ -29,7 +29,9 @@ public class ProjectPageTests : BaseTest
             .CreateProject(project);
 
         Assert.That(projectsPage.GetSuccessMessage(), Is.EqualTo(ExpectedAddProjectESuccessfullyMessage));
+        
         var projectRow = projectsPage.GetProject(project.Name);
+        
         Assert.That(projectRow.ProjectName, Is.EqualTo(project.Name));
     }
 
