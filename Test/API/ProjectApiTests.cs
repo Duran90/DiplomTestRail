@@ -47,8 +47,8 @@ public class ProjectApiTests : BaseApiTest
     [AllureSeverity(SeverityLevel.critical)]
     public void GetProjectPositive()
     {
-        var project = _apiProjectSteps.GetProject(71);
-        Assert.That(project!.Id, Is.EqualTo(71));
+        var project = _apiProjectSteps.GetProject(1);
+        Assert.That(project!.Id, Is.EqualTo(1));
     }
 
     [Test]
