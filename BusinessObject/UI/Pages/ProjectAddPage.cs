@@ -34,6 +34,9 @@ public class ProjectAddPage : ProjectPage
     public string GetErrorMessage()
     {
         WaitingHelper.WaitElement(Driver, _errorMessageLocator);
+        
+        Logger.Debug(_errorMessageLocator);
+        
         return ErrorMessage.GetElementText();
     }
 }

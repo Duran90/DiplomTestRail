@@ -94,7 +94,7 @@ public class ProjectPageTests : BaseTest
         Assert.Multiple(() =>
         {
             Assert.That(page.GetErrorMessage(), Is.EqualTo(ExpectedAddProjectErrorMessage));
-            Assert.That(Browser.Instance.Driver.Url, Is.EqualTo(page.Url));
+            Assert.That(Browser.Url, Is.EqualTo(page.Url));
         });
     }
 }

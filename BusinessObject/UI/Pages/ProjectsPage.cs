@@ -2,6 +2,7 @@ using BusinessObject.UI.Components;
 using Core.Configuration;
 using Core.Selenium;
 using Core.Selenium.Elements;
+using NLog;
 using OpenQA.Selenium;
 
 namespace BusinessObject.UI.Pages;
@@ -42,6 +43,7 @@ public class ProjectsPage : HeaderPage
 
     public ProjectRowComponent GetProject(string projectName)
     {
+        Logger.Info("Open project" + projectName);
         return GetProjectList().SingleOrDefault(project => project.ProjectName.Equals(projectName))!;
     }
 

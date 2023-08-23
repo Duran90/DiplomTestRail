@@ -27,7 +27,7 @@ public class LoginPageTest : BaseTest
         
         WaitingHelper.WaitUntilUrlToBe(Browser.Instance.Driver, mainPage.Url);
         
-        Assert.That(Browser.Instance.Driver.Url, Is.EqualTo(mainPage.Url));
+        Assert.That(Browser.Url, Is.EqualTo(mainPage.Url));
     }
 
     [Test]

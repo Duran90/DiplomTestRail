@@ -37,7 +37,8 @@ public class MainPage : HeaderPage
             component.OpenOverviewPage();
             return;
         }
-
+        Logger.Error("project not found");
         throw new Exception("project not found");
+        
     }
 }

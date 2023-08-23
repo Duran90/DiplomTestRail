@@ -1,6 +1,7 @@
 using Allure.Commons;
 using Core.API;
 using Core.Configuration;
+using NLog;
 using NUnit.Allure.Core;
 
 namespace Test.API;
@@ -15,6 +16,7 @@ public class BaseApiTest
     [OneTimeSetUp]
     public void InitApiClient()
     {
-        _allure = AllureLifecycle.Instance; ApiClient = new BaseApiClient(AppConfiguration.API.BaseUrl);
+        _allure = AllureLifecycle.Instance; 
+        ApiClient = new BaseApiClient(AppConfiguration.API.BaseUrl);
     }
 }

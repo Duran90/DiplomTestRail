@@ -7,6 +7,8 @@ public class Browser
 {
     private static readonly ThreadLocal<Browser> BrowserInstances = new();
     public static Browser Instance => GetBrowser();
+
+    public static string Url => Instance.Driver.Url;
     public IWebDriver Driver { get; }
 
     private static Browser GetBrowser()

@@ -38,9 +38,13 @@ public class LoginPage : BasePage
 
     public MainPage Login(UserModel user)
     {
-        Logger.Info($"Login as \"{user.Username}\"");
+        
         UsernameField.TypeText(user.Username);
+        Logger.Info($"Login as \"{user.Username}\"");
+        
         PasswordField.TypeText(user.Password);
+        Logger.Info($"Login as \"{user.Password}\"");
+        
         LoginButton.ClickElement();
         return new MainPage(Driver);
     }
@@ -49,15 +53,19 @@ public class LoginPage : BasePage
     {
         WaitingHelper.WaitElementUntilIsDisplay(driver: Driver, _errorLoginDescriptionLocator);
         
+        Logger.Debug(_errorLoginDescriptionLocator);
+        
         var errTitle = ErrorLoginMessage.GetElementText().Trim();
         var errText = ErrorLoginDescription.GetElementText().Trim();
-
         return new ErrorMessageModel(errTitle, errText);
     }
 
     public string GetEmailValidationError()
     {
         WaitingHelper.WaitElementUntilIsDisplay(driver: Driver, _errorEmailValidationLocator);
+        
+        Logger.Debug(_errorEmailValidationLocator);
+        
         return ErrorEmailValidation.GetElementText();
     }
 }

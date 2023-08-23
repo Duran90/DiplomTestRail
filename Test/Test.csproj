@@ -35,6 +35,10 @@
       <Content Include="allureConfig.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="NLog.config" />
+      <Content Include="NLog.config">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 
