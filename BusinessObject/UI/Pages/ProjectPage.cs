@@ -24,10 +24,6 @@ public abstract class ProjectPage : HeaderPage
     
     public override ProjectPage Refresh() => (ProjectPage)base.Refresh();
 
-    protected ProjectPage(IWebDriver driver) : base(driver)
-    {
-    }
-
     protected bool SubmitEnabled()
     {
         WaitingHelper.WaitElementUntilIsDisplay(Driver, _acceptButton);
@@ -38,13 +34,13 @@ public abstract class ProjectPage : HeaderPage
     {
         WaitingHelper.WaitElementUntilIsDisplay(Driver, _acceptButton);
         AcceptButton.Click();
-        return new ProjectsPage(Driver);
+        return new ProjectsPage();
     }
     
     protected ProjectsPage Cancel()
     {
         WaitingHelper.WaitElementUntilIsDisplay(Driver, _cancelButton);
         CancelButton.Click();
-        return new ProjectsPage(Driver);
+        return new ProjectsPage();
     }
 }

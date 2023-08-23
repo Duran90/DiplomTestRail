@@ -4,7 +4,7 @@ namespace BusinessObject.UI.Pages;
 
 public class TestCasesPage : HeaderPage
 {
-    public TestCasesPage(IWebDriver driver, string url) : base(driver)
+    public TestCasesPage( string url)
     {
         Url = url;
     }

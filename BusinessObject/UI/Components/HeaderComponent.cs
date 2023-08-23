@@ -18,7 +18,7 @@ public class HeaderComponent : BaseComponent
     public MainPage OpenDashboard()
     {
         Element.FindElement(_backToMainPage).Click();
-        var page = new MainPage(WebDriver);
+        var page = new MainPage();
         WaitingHelper.WaitUntilUrlToBe(WebDriver, page.Url);
         return page;
     }
@@ -27,7 +27,7 @@ public class HeaderComponent : BaseComponent
     {
         var elem = Element.FindElement(_testCasePage);
         elem.Click();
-        var page = new TestCasesPage(WebDriver, elem.GetAttribute("href"));
+        var page = new TestCasesPage(elem.GetAttribute("href"));
         WaitingHelper.WaitUntilUrlToBe(WebDriver, page.Url);
         return page;
     }

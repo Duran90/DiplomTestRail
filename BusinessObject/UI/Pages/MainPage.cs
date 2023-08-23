@@ -10,10 +10,6 @@ public class MainPage : HeaderPage
     private readonly By _addProjectLink = By.CssSelector("a#sidebar-projects-add");
     private readonly By _projectSummary = By.CssSelector("[id^='project-']");
 
-    public MainPage(IWebDriver driver) : base(driver)
-    {
-    }
-
     public override string Url => $"{AppConfiguration.Browser.BaseUrl}/index.php?/dashboard";
 
     public override MainPage Open() => (MainPage)base.Open();
@@ -24,7 +20,7 @@ public class MainPage : HeaderPage
         WaitingHelper.WaitElementUntilIsDisplay(Driver, _addProjectLink);
         var element = Driver.FindElement(_addProjectLink);
         element.Click();
-        return new ProjectAddPage(Driver);
+        return new ProjectAddPage();
     }
 
     public void OpenProject(string projectId)

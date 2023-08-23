@@ -32,10 +32,6 @@ public class LoginPage : BasePage
     public override LoginPage Open() => (LoginPage) base.Open();
     public override LoginPage Refresh() => (LoginPage) base.Refresh();
 
-    public LoginPage(IWebDriver driver) : base(driver)
-    {
-    }
-
     public MainPage Login(UserModel user)
     {
         
@@ -46,7 +42,7 @@ public class LoginPage : BasePage
         Logger.Info($"Login as \"{user.Password}\"");
         
         LoginButton.ClickElement();
-        return new MainPage(Driver);
+        return new MainPage();
     }
 
     public ErrorMessageModel GetLoginErrorMessage()

@@ -13,10 +13,6 @@ public class ProjectAddPage : ProjectPage
     private readonly By _errorMessageLocator = By.CssSelector("#content-inner>div.message.message-error");
 
     private BaseElement ErrorMessage => new(Driver, _errorMessageLocator);
-    public ProjectAddPage(IWebDriver driver) : base(driver)
-    {
-    }
-
     public override ProjectAddPage Open() => (ProjectAddPage)base.Open();
     
     public override ProjectAddPage Refresh() => (ProjectAddPage)base.Refresh();

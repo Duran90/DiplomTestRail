@@ -17,7 +17,7 @@ public class ProjectRowComponent : BaseComponent
     {
         var href = Element.FindElement(_name).GetAttribute("href");
         Element.FindElement(_edit).Click();
-        return new ProjectEditPage(WebDriver, href);
+        return new ProjectEditPage(href);
     }
 
     public void DeleteProject()

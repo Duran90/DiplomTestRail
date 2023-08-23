@@ -1,3 +1,4 @@
+using Core.Selenium;
 using NLog;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
@@ -12,11 +13,11 @@ public abstract class BasePage
 
     public abstract string Url { get; }
 
-    protected BasePage(IWebDriver driver)
+    protected BasePage()
     {
-        Driver = driver;
+        Driver = Browser.Instance.Driver;
         Logger = LogManager.GetCurrentClassLogger();
-        Actions = new Actions(driver: driver);
+        Actions = new Actions(driver: Driver);
     }
 
     public virtual BasePage Open()

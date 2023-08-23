@@ -5,7 +5,7 @@ namespace BusinessObject.UI.Pages;
 
 public class ProjectEditPage : ProjectPage
 {
-    public ProjectEditPage(IWebDriver driver, string url) : base(driver)
+    public ProjectEditPage(string url)
     {
         Url = url;
     }

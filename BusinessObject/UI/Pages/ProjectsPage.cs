@@ -17,11 +17,6 @@ public class ProjectsPage : HeaderPage
     private By _successMessage = By.CssSelector(".message.message-success");
     private BaseElement SuccessMessage => new(Driver, _successMessage);
     
-
-    public ProjectsPage(IWebDriver driver) : base(driver)
-    {
-    }
-
     public override ProjectsPage Open() => (ProjectsPage)base.Open();
 
     public override ProjectsPage Refresh() => (ProjectsPage)base.Refresh();

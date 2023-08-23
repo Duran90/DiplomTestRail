@@ -22,7 +22,7 @@ public class LoginPageTest : BaseTest
     public void LoginPositive()
     {
         var user = UserBuilder.GetTestRailUser();
-        var loginPage = new LoginPage(Browser.Instance.Driver);
+        var loginPage = new LoginPage();
         var mainPage = loginPage.Open().Login(user);
         
         WaitingHelper.WaitUntilUrlToBe(Browser.Instance.Driver, mainPage.Url);
@@ -40,7 +40,7 @@ public class LoginPageTest : BaseTest
     public void LoginNegative()
     {
         var user = UserBuilder.GetTestRailFakeUser();
-        var loginPage = new LoginPage(Browser.Instance.Driver);
+        var loginPage = new LoginPage();
         loginPage.Open().Login(user);
         var errorMessage = loginPage.GetLoginErrorMessage();
         
@@ -61,7 +61,7 @@ public class LoginPageTest : BaseTest
     public void LoginEmpty()
     {
         var user = UserBuilder.GetTestRailEmptyUser();
-        var loginPage = new LoginPage(Browser.Instance.Driver);
+        var loginPage = new LoginPage();
         loginPage.Open().Login(user);
         var errorEmailValidation = loginPage.GetEmailValidationError();
         
